@@ -1,0 +1,178 @@
+@font-face {
+    font-family: gamefont;
+    src: url(https://namekujilsds.github.io/Font/impact.ttf);
+}
+
+* {
+    animation: unset !important;
+    transition: unset !important;
+}
+
+/* div#chatInputHolder, */
+#ammoMax,
+#weapHolder,
+#hudClassIcon,
+#newsHolder,
+#voiceDisplay,
+#timerIcon,
+#ammoIcon,
+#maxHP,
+div#weapDisplay,
+#challIcon,
+#healthBar,
+#newsHolder *,
+#gameNameHolder,
+#tlInfHold,
+.menBtnIcn,
+div#headerRightSocial,
+#termsInfo,
+#instructions,
+div#seasonLabel,
+#bottomLeftPlayerLeft,
+#bottomLeftChallIcon,
+#bottomLeftTeamHolder,
+#bottomLeftHealthBar,
+#streamContainer,
+#topRightAdHolder {
+    display: none !important;
+}
+
+.menuItemTitle {
+    font-size: 0 !important;
+}
+
+.menuItem:nth-child(1) .menuItemTitle:after {
+    content: "P&F";
+    font-size: 20px !important;
+}
+
+.menuItem:nth-child(2) .menuItemTitle:after {
+    content: "S&C";
+    font-size: 20px !important;
+}
+
+.menuItem:nth-child(3) .menuItemTitle:after {
+    content: "C";
+    font-size: 20px !important;
+}
+
+.menuItem:nth-child(4) .menuItemTitle:after {
+    content: "H";
+    font-size: 20px !important;
+}
+
+.menuItem:nth-child(5) .menuItemTitle:after {
+    content: "G";
+    font-size: 20px !important;
+}
+
+.menuItem:nth-child(6) .menuItemTitle:after {
+    content: "M";
+    font-size: 20px !important;
+}
+
+.menuItem:nth-child(7) .menuItemTitle:after {
+    content: "S";
+    font-size: 20px !important;
+}
+
+.menuItem:nth-child(8) .menuItemTitle:after {
+    content: "E";
+    font-size: 20px !important;
+}
+
+
+#bottomLeftPlayer {
+    background: transparent;
+    font-weight: bolder;
+}
+
+#bottomLeftHolder,
+#bottomLeftPlayerRight {
+    background: transparent;
+}
+
+#bottomLeftPlayerRight {
+    position: fixed !important;
+    left: 0;
+    bottom: 20px;
+}
+
+#bottomLeftHealth {
+    font-size: 60px;
+}
+
+#reloadMsg {
+    border: unset;
+    background: transparent;
+    bottom: 40%;
+    font-size: 20px;
+}
+
+#ammoHolder,
+.greyInner,
+.greyInlineInner,
+.greyInlineInnerMid {
+    background: transparent;
+}
+
+#ammoVal {
+    padding: 10px;
+    height: auto;
+    background: transparent;
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+#timerDisplay {
+    background: transparent;
+    font-weight: bolder;
+    height: auto;
+}
+
+#timerVal {
+    font-size: 30px;
+}
+
+#chatList,
+#chatInputHolder *,
+#chatInputHolder,
+.chatItem {
+    background: transparent !important;
+    box-shadow: unset;
+    border: unset;
+    font-weight: bolder !important;
+}
+
+.chatMsg,
+.chatItem,
+.chatItem *,
+.chatMsg * {
+    font-weight: bolder !important;
+}
+
+#curGameInfo {
+    margin-top: 30px;
+}
+
+
+#leaderboardHolder,
+#leaderContainer,
+#timerHolder,
+#timerInner {
+    background: transparent !important;
+    border: unset !important;
+}
+
+.topRightCounters * {
+    background: transparent !important;
+}
+
+#menuClassContainer:after {
+    content: "CSS BY Namekuji";
+    color: gray
+}
+
+#clientExit {
+    display: flex !important;
+}
