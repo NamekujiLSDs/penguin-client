@@ -1,5 +1,6 @@
 const { app, Menu, BrowserWindow, protocol, ipcMain } = require('electron');
 const localShortcut = require('electron-localshortcut');
+const { autoUpdater } = require("electron-updater")
 const path = require('path');
 
 //脆弱性の対策らしい？知らんけど
@@ -15,12 +16,83 @@ protocol.registerSchemesAsPrivileged([{
         corsEnabled: true
     }
 }])
+let mainWindow = null;
+let splashWindow = null;
+
+
+function splash() {
+    splashWindow = new BrowserWindow({
+        height: 200,
+        width: 400,
+        title: "Penguin Cient",
+        alwaysOnTop: true,
+        transparent: true,
+        frame: false,
+        resizable: false,
+        webPreferences: {
+            preload: path.join(__dirname, "splash/preload.js")
+        },
+    });
+
+
+    const update = async () => {
+        let updateCheck = null
+        autoUpdater.on('checking-for-update', () => {
+            splashWindow.webContents.send("status", "Checking for updates...");
+            updateCheck = setTimeout(() => {
+                splashWindow.webContents.send("status", "Update check error!")
+                setTimeout(() => {
+                    createWindow()
+                }, 1000);
+            }, 15000);
+        });
+        autoUpdater.on("update-available", (i) => {
+            if (updateCheck) clearTimeout(updateCheck);
+            splashWindow.webContents.send("status", `Found new verison v${i.version}`)
+        });
+        autoUpdater.on("update-not-available", () => {
+            if (updateCheck) clearTimeout(updateCheck);
+            splashWindow.webContents.send('status', "You using latest version.");
+            setTimeout(() => {
+                createWindow();
+            }, 1000);
+        });
+
+        autoUpdater.on('error', (e) => {
+            if (updateCheck) clearTimeout(updateCheck);
+            splashWindow.webContents.send('status', "Error!" + e.name);
+            setTimeout(() => {
+                createWindow();
+            }, 1000);
+        });
+        autoUpdater.on('download-progress', (i) => {
+            if (updateCheck) clearTimeout(updateCheck);
+            splashWindow.webContents.send('status', "Downloading new version...");
+        });
+        autoUpdater.on('update-downloaded', (i) => {
+            if (updateCheck) clearTimeout(updateCheck);
+            splashWindow.webContents.send("status", "Update downloaded");
+            setTimeout(() => {
+                autoUpdater.quitAndInstall();
+            }, 1000);
+        });
+        autoUpdater.autoDownload = "download";
+        autoUpdater.allowPrerelease = false;
+        autoUpdater.checkForUpdates();
+    };
+    splashWindow.loadURL(path.join(__dirname, "splash/index.html"))
+    splashWindow.webContents.on("did-finish-load", () => {
+        splashWindow.show();
+        update()
+    })
+}
 
 function createWindow() {
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 1920,
         height: 1080,
-        title: "いんぱくとの煮込みカレー",
+        show: false,
+        title: "Penguin Cient",
         icon: path.join(__dirname, 'icon.ico'),
         webPreferences: {
             contextIsolation: false,
@@ -58,6 +130,10 @@ function createWindow() {
     app.on('will-quit', () => {
         localShortcut.unregisterAll();
     });
+    mainWindow.once("ready-to-show", () => {
+        splashWindow.destroy();
+        mainWindow.show();
+    });
 }
 app.commandLine.appendSwitch('disable-frame-rate-limit');
 app.commandLine.appendSwitch('disable-gpu-vsync');
@@ -66,11 +142,18 @@ app.commandLine.appendSwitch('ignore-gpu-blocklist');
 app.commandLine.appendSwitch('enable-quic');
 app.commandLine.appendSwitch('enable-gpu-rasterization');
 
-app.on('ready', () => {
-    createWindow();
+app.whenReady().then(() => {
+    // スプラッシュを最初に表示
+    splash();
 });
+
 
 // App
 app.on('ready', () => {
     protocol.registerFileProtocol('slug', (request, callback) => callback(decodeURI(request.url.replace(/^slug:\//, ''))));
 })
+
+ipcMain.handle("appVer", () => {
+    const version = app.getVersion();
+    return version;
+});

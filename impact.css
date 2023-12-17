@@ -21,8 +21,8 @@ div#weapDisplay,
 #challIcon,
 #healthBar,
 #newsHolder *,
-#gameNameHolder,
 #tlInfHold,
+#mainLogoFace,
 .menBtnIcn,
 div#headerRightSocial,
 #termsInfo,
@@ -33,7 +33,8 @@ div#seasonLabel,
 #bottomLeftTeamHolder,
 #bottomLeftHealthBar,
 #streamContainer,
-#topRightAdHolder {
+#topRightAdHolder,
+.clientPop {
     display: none !important;
 }
 
@@ -175,4 +176,12 @@ div#seasonLabel,
 
 #clientExit {
     display: flex !important;
+}
+
+#mainLogo {
+    content: url("https://cdn.discordapp.com/attachments/961510273162821664/1180694572708405338/image_2.png?ex=657e5a82&is=656be582&hm=063937d1e94093dde9cf325f600645d50264c6bba77920d3bafd7088b51cf02a&")
+}
+
+#instructionHolder {
+    background: transparent
 }
