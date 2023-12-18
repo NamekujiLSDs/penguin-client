@@ -1,17 +1,15 @@
 @font-face {
-    font-family: "customFont";
-    src: url(./Dhurjati-Regular.ttf);
+    font-family: customFont;
+    src: url(Dhurjati-Regular.ttf)
 }
 
-
-html,
-body {
+body,
+html {
     margin: unset;
     padding: unset;
-    background: transparent;
-    color: black;
+    color: #000;
     overflow: hidden;
-    background: transparent;
+    background: transparent
 }
 
 *,
@@ -19,21 +17,23 @@ body {
     user-select: none;
     -webkit-user-drag: none;
     -moz-user-select: none;
-    font-family: "customFont";
+    font-family: customFont
 }
 
 img {
-    background-color: transparent;
+    background-color: transparent
 }
 
 #appVer {
-    position: fixed;
-    bottom: 5px;
     right: 10px
 }
 
+#appVer,
 #stat {
     position: fixed;
-    bottom: 5px;
+    bottom: 5px
+}
+
+#stat {
     left: 10px
 }

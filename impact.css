@@ -1,172 +1,162 @@
-@font-face {
-    font-family: gamefont;
-    src: url(https://namekujilsds.github.io/Font/impact.ttf);
-}
-
 * {
     animation: unset !important;
-    transition: unset !important;
+    transition: unset !important
 }
 
-/* div#chatInputHolder, */
-#ammoMax,
-#weapHolder,
-#hudClassIcon,
-#newsHolder,
-#voiceDisplay,
-#timerIcon,
 #ammoIcon,
-#maxHP,
-div#weapDisplay,
+#ammoMax,
+#bottomLeftChallIcon,
+#bottomLeftHealthBar,
+#bottomLeftPlayerLeft,
+#bottomLeftTeamHolder,
 #challIcon,
 #healthBar,
-#newsHolder *,
-#tlInfHold,
+#hudClassIcon,
+#instructions,
 #mainLogoFace,
+#maxHP,
+#newsHolder,
+#newsHolder *,
+#streamContainer,
+#termsInfo,
+#timerIcon,
+#tlInfHold,
+#topRightAdHolder,
+#voiceDisplay,
+#weapHolder,
+.clientPop,
 .menBtnIcn,
 div#headerRightSocial,
-#termsInfo,
-#instructions,
 div#seasonLabel,
-#bottomLeftPlayerLeft,
-#bottomLeftChallIcon,
-#bottomLeftTeamHolder,
-#bottomLeftHealthBar,
-#streamContainer,
-#topRightAdHolder,
-.clientPop {
-    display: none !important;
+div#weapDisplay {
+    display: none !important
 }
 
 .menuItemTitle {
-    font-size: 0 !important;
+    font-size: 0 !important
 }
 
 .menuItem:nth-child(1) .menuItemTitle:after {
     content: "P&F";
-    font-size: 20px !important;
+    font-size: 20px !important
 }
 
 .menuItem:nth-child(2) .menuItemTitle:after {
     content: "S&C";
-    font-size: 20px !important;
+    font-size: 20px !important
 }
 
 .menuItem:nth-child(3) .menuItemTitle:after {
     content: "C";
-    font-size: 20px !important;
+    font-size: 20px !important
 }
 
 .menuItem:nth-child(4) .menuItemTitle:after {
     content: "H";
-    font-size: 20px !important;
+    font-size: 20px !important
 }
 
 .menuItem:nth-child(5) .menuItemTitle:after {
     content: "G";
-    font-size: 20px !important;
+    font-size: 20px !important
 }
 
 .menuItem:nth-child(6) .menuItemTitle:after {
     content: "M";
-    font-size: 20px !important;
+    font-size: 20px !important
 }
 
 .menuItem:nth-child(7) .menuItemTitle:after {
     content: "S";
-    font-size: 20px !important;
+    font-size: 20px !important
 }
 
 .menuItem:nth-child(8) .menuItemTitle:after {
     content: "E";
-    font-size: 20px !important;
+    font-size: 20px !important
 }
 
-
 #bottomLeftPlayer {
-    background: transparent;
-    font-weight: bolder;
+    font-weight: bolder
 }
 
 #bottomLeftHolder,
+#bottomLeftPlayer,
 #bottomLeftPlayerRight {
-    background: transparent;
+    background: transparent
 }
 
 #bottomLeftPlayerRight {
     position: fixed !important;
     left: 0;
-    bottom: 20px;
+    bottom: 20px
 }
 
 #bottomLeftHealth {
-    font-size: 60px;
+    font-size: 60px
 }
 
 #reloadMsg {
     border: unset;
-    background: transparent;
     bottom: 40%;
-    font-size: 20px;
+    font-size: 20px
 }
 
 #ammoHolder,
-.greyInner,
+#reloadMsg,
 .greyInlineInner,
-.greyInlineInnerMid {
-    background: transparent;
+.greyInlineInnerMid,
+.greyInner {
+    background: transparent
 }
 
 #ammoVal {
     padding: 10px;
-    height: auto;
-    background: transparent;
-    font-weight: bolder;
-    font-size: 50px;
+    font-size: 50px
 }
 
+#ammoVal,
 #timerDisplay {
-    background: transparent;
-    font-weight: bolder;
     height: auto;
+    background: transparent;
+    font-weight: bolder
 }
 
 #timerVal {
-    font-size: 30px;
+    font-size: 30px
 }
 
-#chatList,
-#chatInputHolder *,
 #chatInputHolder,
+#chatInputHolder *,
+#chatList,
 .chatItem {
     background: transparent !important;
     box-shadow: unset;
     border: unset;
-    font-weight: bolder !important;
+    font-weight: bolder !important
 }
 
-.chatMsg,
 .chatItem,
 .chatItem *,
+.chatMsg,
 .chatMsg * {
-    font-weight: bolder !important;
+    font-weight: bolder !important
 }
 
 #curGameInfo {
-    margin-top: 30px;
+    margin-top: 30px
 }
 
-
-#leaderboardHolder,
 #leaderContainer,
+#leaderboardHolder,
 #timerHolder,
 #timerInner {
     background: transparent !important;
-    border: unset !important;
+    border: unset !important
 }
 
 .topRightCounters * {
-    background: transparent !important;
+    background: transparent !important
 }
 
 #menuClassContainer:after {
@@ -175,11 +165,11 @@ div#seasonLabel,
 }
 
 #clientExit {
-    display: flex !important;
+    display: flex !important
 }
 
 #mainLogo {
-    content: url("https://cdn.discordapp.com/attachments/961510273162821664/1180694572708405338/image_2.png?ex=657e5a82&is=656be582&hm=063937d1e94093dde9cf325f600645d50264c6bba77920d3bafd7088b51cf02a&")
+    content: url(https://cdn.discordapp.com/attachments/961510273162821664/1180694572708405338/image_2.png?=null&ex=657e5a82&hm=063937d1e94093dde9cf325f600645d50264c6bba77920d3bafd7088b51cf02a&is=656be582)
 }
 
 #instructionHolder {
