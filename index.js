@@ -147,7 +147,6 @@ app.whenReady().then(() => {
     splash();
 });
 
-
 // App
 app.on('ready', () => {
     protocol.registerFileProtocol('slug', (request, callback) => callback(decodeURI(request.url.replace(/^slug:\//, ''))));
