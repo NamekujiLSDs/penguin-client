@@ -1,4 +1,4 @@
-const { app, Menu, BrowserWindow, protocol, ipcMain } = require('electron');
+const { app, Menu, BrowserWindow, session, protocol, ipcMain } = require('electron');
 const localShortcut = require('electron-localshortcut');
 const { autoUpdater } = require("electron-updater")
 const path = require('path');
@@ -135,6 +135,8 @@ function createWindow() {
         mainWindow.show();
     });
 }
+
+
 app.commandLine.appendSwitch('disable-frame-rate-limit');
 app.commandLine.appendSwitch('disable-gpu-vsync');
 app.commandLine.appendSwitch('in-process-gpu');
@@ -142,8 +144,22 @@ app.commandLine.appendSwitch('ignore-gpu-blocklist');
 app.commandLine.appendSwitch('enable-quic');
 app.commandLine.appendSwitch('enable-gpu-rasterization');
 
+const rejectList = require('./reject.json').urls;
+
+app.on('ready', () => {
+    session.defaultSession.webRequest.onBeforeRequest((details, callback) => {
+        const url = details.url
+        if (rejectList.some(domain => url.includes(domain))) {
+            callback({ cancel: true })
+            console.log(`Blocked ${url}`)
+        } else {
+            callback({ cancel: false })
+            console.log(`Allowed ${url}`)
+        }
+    });
+});
+
 app.whenReady().then(() => {
-    // スプラッシュを最初に表示
     splash();
 });
 
