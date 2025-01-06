@@ -140,9 +140,9 @@ function createWindow() {
 app.commandLine.appendSwitch('disable-frame-rate-limit');
 app.commandLine.appendSwitch('disable-gpu-vsync');
 app.commandLine.appendSwitch('in-process-gpu');
-app.commandLine.appendSwitch('ignore-gpu-blocklist');
-app.commandLine.appendSwitch('enable-quic');
-app.commandLine.appendSwitch('enable-gpu-rasterization');
+// app.commandLine.appendSwitch('ignore-gpu-blocklist');
+// app.commandLine.appendSwitch('enable-quic');
+// app.commandLine.appendSwitch('enable-gpu-rasterization');
 
 const rejectList = require('./reject.json').urls;
 
