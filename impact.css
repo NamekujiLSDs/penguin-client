@@ -38,47 +38,57 @@ div#weapDisplay {
 }
 
 .menuItemTitle {
-    font-size: 0 !important
+    font-size: 0 !important;
+}
+
+.menuItem {
+    padding-right: 10px;
+}
+
+.menuItem:hover {
+    padding-right: 0px;
+    border-right: 10px solid;
 }
 
 .menuItem:nth-child(1) .menuItemTitle:after {
-    content: "P&F";
-    font-size: 20px !important
+    content: "Profile";
+    font-size: 20px
 }
 
 .menuItem:nth-child(2) .menuItemTitle:after {
-    content: "S&C";
-    font-size: 20px !important
-}
-
-.menuItem:nth-child(3) .menuItemTitle:after {
-    content: "C";
-    font-size: 20px !important
+    content: "Challenge";
+    font-size: 20px
 }
 
 .menuItem:nth-child(4) .menuItemTitle:after {
-    content: "H";
-    font-size: 20px !important
+    content: "Social";
+    font-size: 20px
 }
 
-.menuItem:nth-child(5) .menuItemTitle:after {
-    content: "G";
-    font-size: 20px !important
+.menuItem:nth-child(5) {
+    display: none !important;
+    content: "H";
+    font-size: 20px;
 }
 
 .menuItem:nth-child(6) .menuItemTitle:after {
-    content: "M";
+    content: "Games";
     font-size: 20px !important
 }
 
 .menuItem:nth-child(7) .menuItemTitle:after {
-    content: "S";
-    font-size: 20px !important
+    content: "Mods";
+    font-size: 20px
 }
 
 .menuItem:nth-child(8) .menuItemTitle:after {
-    content: "E";
-    font-size: 20px !important
+    content: "Settings";
+    font-size: 20px
+}
+
+.menuItem:nth-child(9) .menuItemTitle:after {
+    content: "Exit";
+    font-size: 20px
 }
 
 #bottomLeftPlayer {
