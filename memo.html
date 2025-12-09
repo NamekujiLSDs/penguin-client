@@ -1,0 +1,72 @@
+<div id="menuWindow" class="stickyHeader dark" style="overflow-y: auto; width: 1000px;">
+	<div id="altHeader">
+		<div id="altHeaderTitle">Alt Manager</div>
+		<div id="addAlt" class="button" onclick="addAlt()">+</div>
+
+	</div>
+	<div id="altList">
+		<div class="altListItem">
+			<div class="altName">プレイヤー</div>
+			<div class="edit material-icons-outlined button" onclick="editAlt(0)">edit</div>
+			<div class="login material-icons-outlined button" onclick="loginAlt(0)">login</div>
+		</div>
+		<div class="altListItem">
+			<div class="altName">プレイヤー</div>
+			<div class="edit material-icons-outlined button" onclick="editAlt(1)">edit</div>
+			<div class="login material-icons-outlined button" onclick="loginAlt(1)">login</div>
+		</div>
+		<div class="altListItem">
+			<div class="altName">プレイヤー</div>
+			<div class="edit material-icons-outlined button" onclick="editAlt(2)">edit</div>
+			<div class="login material-icons-outlined button" onclick="loginAlt(2)">login</div>
+		</div>
+		<div class="altListItem">
+			<div class="altName">プレイヤー</div>
+			<div class="edit material-icons-outlined button" onclick="editAlt(3)">edit</div>
+			<div class="login material-icons-outlined button" onclick="loginAlt(3)">login</div>
+		</div>
+	</div>
+</div>
+<div id="menuWindow" class="stickyHeader dark" style="overflow-y: auto; width: 1000px;">
+	<div class="altInputs">
+		Username
+		<input type="text" class="io-input-field" id="altUsername" placeholder="Username">
+	</div>
+	<div class="altInputs">
+		Password
+		<div id="altPasswordHolder">
+			<input type="password" class="io-input-field" id="altPass" placeholder="Password">
+			<span class="material-icons-outlined button passVis">visibility</span>
+		</div>
+	</div>
+	<div id="altWarn"></div>
+	<div id="inputtings">
+		<div id="addAlt" class="button" onclick="window.saveAltAccount()">Add Account</div>
+		<div id="cancelAddAlt" class="button" onclick="window.openAltManager()">Cancel</div>
+	</div>
+</div>
+
+<div id="menuWindow" class="stickyHeader dark" style="overflow-y: auto; width: 1000px;">
+	<div class="altInputs">
+		Username
+		<input type="text" class="io-input-field" id="altUsername" placeholder="Username">
+	</div>
+	<div class="altInputs">
+		Password
+		<div id="altPasswordHolder">
+			<input type="password" class="io-input-field" id="altPass" placeholder="Password">
+			<span class="material-icons-outlined button passVis">visibility</span>
+		</div>
+	</div>
+	<div id="altWarn"></div>
+	<div id="inputtings">
+		<div id="addAlt" class="button" onclick="window.saveAltChange()">Save alt Edit</div>
+		<div id="cancelAddAlt" class="button" onclick="window.openAltManager()">Cancel</div>
+	</div>
+</div>
+
+<div id="genericPop" style="display: block;" class="clientExitPop">
+	<div class="message">Are you sure remove alt <br> ${name}</div>
+	<button id="confirmBtn" onclick="window.removeConfirm(num)">YES</button>
+	<button id="declineBtn" onclick="window.openAltManager()">NO</button>
+</div>

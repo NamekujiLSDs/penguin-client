@@ -2,6 +2,17 @@ const { app, Menu, BrowserWindow, session, protocol, ipcMain } = require('electr
 const localShortcut = require('electron-localshortcut');
 const { autoUpdater } = require("electron-updater")
 const path = require('path');
+const store = require("electron-store")
+
+const config = new store({
+    encryptionKey: "IMP4CTL"
+})
+//UAの偽装
+app.userAgentFallback = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
+//DevMode
+autoUpdater.forceDevUpdateConfig = true;
+
 
 //脆弱性の対策らしい？知らんけど
 delete require('electron').nativeImage.createThumbnailFromPath;
@@ -30,7 +41,7 @@ function splash() {
         frame: false,
         resizable: false,
         webPreferences: {
-            preload: path.join(__dirname, "splash/preload.js")
+            preload: path.join(__dirname, "./assets/splash/preload.js")
         },
     });
 
@@ -57,7 +68,13 @@ function splash() {
                 createWindow();
             }, 1000);
         });
-
+        autoUpdater.on("skipped", () => {
+            if (updateCheck) clearTimeout(updateCheck);
+            splashWindow.webContents.send('status', "You using latest version.");
+            setTimeout(() => {
+                createWindow();
+            }, 1000);
+        });
         autoUpdater.on('error', (e) => {
             if (updateCheck) clearTimeout(updateCheck);
             splashWindow.webContents.send('status', "Error!" + e.name);
@@ -80,7 +97,7 @@ function splash() {
         autoUpdater.allowPrerelease = false;
         autoUpdater.checkForUpdates();
     };
-    splashWindow.loadURL(path.join(__dirname, "splash/index.html"))
+    splashWindow.loadURL(path.join(__dirname, "./assets/splash/index.html"))
     splashWindow.webContents.on("did-finish-load", () => {
         splashWindow.show();
         update()
@@ -93,10 +110,10 @@ function createWindow() {
         height: 1080,
         show: false,
         title: "Penguin Cient",
-        icon: path.join(__dirname, 'icon.ico'),
+        icon: path.join(__dirname, './assets/image/icon.ico'),
         webPreferences: {
             contextIsolation: false,
-            preload: path.join(__dirname, './preload.js'),
+            preload: path.join(__dirname, './assets/js/preload.js'),
             enableRemoteModule: true, // オプションによっては必要な場合があります
             experimentalFeatures: true,
             enableHardwareAcceleration: true
@@ -140,21 +157,19 @@ function createWindow() {
 app.commandLine.appendSwitch('disable-frame-rate-limit');
 app.commandLine.appendSwitch('disable-gpu-vsync');
 app.commandLine.appendSwitch('in-process-gpu');
-// app.commandLine.appendSwitch('ignore-gpu-blocklist');
-// app.commandLine.appendSwitch('enable-quic');
-// app.commandLine.appendSwitch('enable-gpu-rasterization');
+app.commandLine.appendSwitch('ignore-gpu-blocklist');
+app.commandLine.appendSwitch('enable-quic');
+app.commandLine.appendSwitch('enable-gpu-rasterization');
 
-const rejectList = require('./reject.json').urls;
+const rejectList = require('./assets/json/reject.json').urls;
 
 app.on('ready', () => {
     session.defaultSession.webRequest.onBeforeRequest((details, callback) => {
         const url = details.url
         if (rejectList.some(domain => url.includes(domain))) {
             callback({ cancel: true })
-            console.log(`Blocked ${url}`)
         } else {
             callback({ cancel: false })
-            console.log(`Allowed ${url}`)
         }
     });
 });
@@ -172,3 +187,17 @@ ipcMain.handle("appVer", () => {
     const version = app.getVersion();
     return version;
 });
+
+ipcMain.on("log", (e, val) => {
+    switch (val[0]) {
+        case "info":
+            console.log(val[1]);
+            break;
+        case "warn":
+            console.warn(val[1]);
+            break;
+        case "error":
+            console.error(val[1]);
+            break;
+    }
+})

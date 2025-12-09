@@ -29,7 +29,6 @@
 #topRightAdHolder,
 #voiceDisplay,
 #weapHolder,
-.clientPop,
 .menBtnIcn,
 div#headerRightSocial,
 div#seasonLabel,
@@ -189,4 +188,206 @@ div#weapDisplay {
 
 #instructionHolder {
     background: transparent
+}
+
+/* AltManagerÃƒÆ’Ã‚Â§ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂÃƒâ€šÃ‚Â¨ */
+div#playerHeaderEl {
+    display: flex;
+    flex-direction: row-reverse;
+    width: fit-content;
+}
+
+div#altManager {
+    border: 2px solid #020040 !important;
+    padding: 10px;
+    display: block;
+    color: white !important;
+    margin-top: 9px;
+}
+
+.headerBar {
+    position: unset;
+}
+
+
+/* AltManagerWindow */
+.altListItem {
+    display: flex;
+    background: #fff4;
+    margin: 10px;
+    border-radius: 10px;
+    align-items: center;
+    padding: 5px;
+
+}
+
+.altName {
+    width: -webkit-fill-available;
+    margin-left: 30px;
+}
+
+
+.altEdit,
+.altLogin,
+.altRemove {
+    border: 4px solid;
+    padding: 5px;
+    border-radius: 10px;
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+    margin-bottom: unset;
+}
+
+.altLogin {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.altEdit {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.altRemove {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+div#altHeader {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: sticky;
+    margin-left: 0;
+}
+
+div#altList {
+    display: flex;
+    flex-direction: column;
+}
+
+.altListItem .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px !important;
+}
+
+div#altHeader {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+div#altHeaderTitle {
+    width: -webkit-fill-available;
+    font-size: 25px;
+}
+
+#altHeader .button {
+    width: fit-content;
+    white-space: nowrap;
+    padding: 5px;
+    margin: unset;
+}
+
+div#addAlt {
+    width: 30px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px !important;
+}
+
+div#inputtings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+div#inputtings .button {
+    padding: 15px;
+    margin: 10px;
+    white-space: nowrap;
+    width: fit-content !important;
+    font-size: 25px !important;
+}
+
+.altInputs,
+.altInputs input {
+    margin-top: 10px;
+}
+
+div#altPasswordHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span.material-icons-outlined.button.passVis {
+    height: 50px;
+    width: 50px;
+    font-size: 35px !important;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+    margin-left: 20px;
+}
+
+div#altWarn {
+    border: 4px solid #f002;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f002 !important;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+div#noAlts {
+    border: 4px solid;
+    border-radius: 10px;
+    padding: 30px 10px;
+    max-height: 100px;
+    height: max-content;
+    text-align: center;
+    font-size: 30px;
+    background: #fff2;
+}
+
+.altRemovePopup {
+    pointer-events: auto;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 15px;
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    width: fit-content;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    max-width: 700px;
+    /* display: grid !important; */
+    padding: 10px;
+}
+
+
+.altRemovePopup .message {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.altRemovePopup #confirmBtn,
+.altRemovePopup #declineBtn {
+    margin: 5px;
+    width: 40%;
 }

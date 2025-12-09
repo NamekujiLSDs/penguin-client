@@ -1,12 +1,16 @@
 const { ipcRenderer } = require('electron');
+const altManager = require('./alt-manager.js');
 const path = require('path');
+const { info } = require('console');
+
+
 //ESCを受け取る
 ipcRenderer.on('ESC', () => {
     document.exitPointerLock();
 });
 
 function cssInject() {
-    let cssIn = `<link rel="stylesheet" href="slug://${path.join(__dirname, 'impact.css')}">`
+    let cssIn = `<link rel="stylesheet" href="slug://${path.join(__dirname, '../css/impact.css')}">`
     document.body.insertAdjacentHTML('afterbegin', cssIn);
 }
 
@@ -25,6 +29,8 @@ function onReturnHolderGenerated() {
 
 // DOMContentLoadedイベントが発生したときに実行されるコード
 document.addEventListener("DOMContentLoaded", function () {
+    altManager.altManagerButton();
+    clearPops()
     // MutationObserverを使用して、DOMの変更を監視する
     const observer = new MutationObserver(function (mutationsList) {
         // 変更があったらmutationが渡されるので、それぞれのmutationをチェックする
@@ -46,3 +52,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const config = { childList: true, subtree: true };
     observer.observe(targetNode, config);
 });
+
+//console.logの代わりになるもの
+window.logger = {
+    info: function (val) {
+        ipcRenderer.send("log", ["info", val])
+    },
+    warn: function (val) {
+        ipcRenderer.send("log", ["warn", val])
+    },
+    error: function (val) {
+        ipcRenderer.send("log", ["error", val])
+    }
+}
+
+window.openAltManager = () => { altManager.openAltManager() }
+window.addAlt = () => { altManager.openAddWin() };
+window.saveAltAccount = () => { altManager.saveAlt() }
+window.altLogin = num => { altManager.loginAlt(num) }
+window.altEdit = num => { altManager.editAlt(num) }
+window.saveAltChange = num => { altManager.saveEdit(num) }
+window.altRemove = num => { altManager.removeAlt(num) }
+window.removeConfirm = num => { altManager.removeConfirm(num) }
