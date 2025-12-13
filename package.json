@@ -1,11 +1,11 @@
 {
     "name": "penguin-client",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "impact from the curry",
     "main": "index.js",
     "scripts": {
         "test": "electron .",
-        "build": "electron-builder --win --x64 --publish never",
+        "build": "electron-builder --win --x64 --publish never ",
         "publish": "electron-builder --win --x64 --publish always"
     },
     "author": "Namekuji",
@@ -28,7 +28,8 @@
                 "provider": "github",
                 "owner": "NamekujiLSDs"
             },
-            "target": "nsis"
+            "target": "nsis",
+            "icon": "assets/image/icon.ico"
         },
         "nsis": {
             "oneClick": true
